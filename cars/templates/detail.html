@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for i in detail_car %}
+        <div class="columns box is-fullwidth a1">
+            <div class="column is-half">
+                <img src="{{ i.image1.url }}" alt="" style="">
+                <a class="button is-success " href="{% url 'cars:test_drive' i.slug %}">Test drive</a>
+                <a class="button is-success">Test drive</a>
+            </div>
+            <div class="column is-half">
+                <div class="title">{{ i.name }}</div>
+                <div class="subtitle has-text-grey-dark ">
+                    Цена:-------------------------------------------------------{{ i.price }}$
+                </div>
+                <div class="subtitle">
+                    Категория:-------------------------------------------------------{{ i.category }}</div>
+                <div class="subtitle">
+                    Марка:----------------------------------------------------------{{ i.brand }}</div>
+                <div class="subtitle ">Дата производства:-----------------------------------------{{ i.date }}</div>
+                <div class="subtitle">
+                    Пробег:-------------------------------------------------------------------{{ i.probeg }}</div>
+                <div class="subtitle">Обьём
+                    двигателя:-------------------------------------------------------{{ i.obyomdvigatela }}</div>
+                <div class="subtitle">
+                    Цвет:---------------------------------------------------------------{{ i.color }}</div>
+                <div class="subtitle">коробка
+                    передач:-------------------------------------------------------{{ i.korobka }}</div>
+                <div class="subtitle">
+                    привод:-----------------------------------------------------------------{{ i.privod }}</div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

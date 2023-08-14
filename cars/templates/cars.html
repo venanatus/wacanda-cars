@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load brand %}
+
+
+
+
+{% block slider %}
+    <div class="container-slide">
+        <div id="carousel-demo" class="carousel">
+            {% for slide in slides %}
+                <div class="item-1">
+                    <img class="slider-img" src="{{ slide.image.url }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    {% brands %}
+    <section class="section">
+        <h1 class="title has-text-centered mt-6">Специальные предложения именно для ВАС!</h1>
+        <h1 class="title has-text-centered" style="margin-bottom: 25px">
+            _________________________________________________________________</h1>
+
+
+        <div class="columns mt-6 is-centered">
+            {% for cars in car %}
+                <a class="column card mt-6 b1 is-4 m-4 " style="border-radius: 30px"
+                   href="{% url 'cars:detail' cars.slug %}">
+                    <div class="card-image">
+                        <img src="{{ cars.image1.url }}" alt="" style="border-radius: 30px" width="100%" height="250px">
+                    </div>
+                    <div class="title ">
+                        {{ cars.name }}
+                    </div>
+                    <div class="subtitle has-text-grey-dark ">
+                        <h2>Цена: <span
+                                style="font-size: 18px">--------------------------------------</span>{{ cars.price }}$
+                        </h2>
+                    </div>
+                    <div class="subtitle">Категория:<span
+                            style="font-size: 18px">------------------------------------</span>{{ cars.category }}</div>
+                    <div class="subtitle"><h1>Марка:<span style="font-size: 18px">--------------------------------------------</span>{{ cars.brand }}
+                    </h1></div>
+                    <div class="subtitle ">Дата производства: {{ cars.date }}</div>
+                </a>
+            {% endfor %}
+        </div>
+
+
+    </section>
+{% endblock %}

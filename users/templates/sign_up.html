@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+
+
+<style>
+    body{
+        background-image:url("{% static 'images/photo_2023-07-27_15-20-40.jpg' %}") ;
+        background-repeat:no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+
+<div class="wacanda-image">
+    <div class="columns is-centered" style="margin-top: 4%">
+        <div class="column is-4">
+            <div class="box has-background-info-light" style="opacity: 1">
+                <form class="form has-text-centered" method="post">
+                    <h1 class="title is-size-2 has-text-centered">Регистрация</h1>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="field">
+                            <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="button is-primary is-fullwidth">
+                        Submit
+                    </button>
+                    <hr class="has-background-grey-lighter">
+                    <div class="is-size-5 has-text-grey-light">Уже есть аккаунт ? </div>
+                    <a href="{% url 'users:sign_in' %}" class="button is-ghost">
+                        Перейти на страницу входа
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
