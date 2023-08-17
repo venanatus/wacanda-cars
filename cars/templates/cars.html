@@ -34,12 +34,17 @@
                         {{ cars.name }}
                     </div>
                     <div class="subtitle has-text-grey-dark ">
-                        <h2>Цена: <span
-                                style="font-size: 18px">--------------------------------------</span>{{ cars.price }}$
-                        </h2>
+                        <div class="columns is-vcentered">
+                            <div class="column is-2">Цена</div>
+                            <div class="column">
+                                <hr style="background: black
+">
+                            </div>
+                            <div class="column is-4">{{ cars.price }}$</div>
+                        </div>
                     </div>
-                    <div class="subtitle">Категория:<span
-                            style="font-size: 18px">------------------------------------</span>{{ cars.category }}</div>
+                        <div class="subtitle">Категория:<span
+                                style="font-size: 18px">------------------------------------</span>{{ cars.category }}</div>
                     <div class="subtitle"><h1>Марка:<span style="font-size: 18px">--------------------------------------------</span>{{ cars.brand }}
                     </h1></div>
                     <div class="subtitle ">Дата производства: {{ cars.date }}</div>

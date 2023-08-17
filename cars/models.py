@@ -66,8 +66,8 @@ class Category(models.Model):
 class TestDrive(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    phone = models.IntegerField()
-    date = models.DateTimeField()
+    phone = models.CharField(max_length=255)
+    date = models.DateTimeField(auto_now=True)
     car = models.ForeignKey(Car, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):

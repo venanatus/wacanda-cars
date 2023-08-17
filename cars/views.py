@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Car, Slide
 from django.db.models import Q
-from .forms import ApplicationForm
+from .forms import TestDriveForm
 
 
 def cars(request):
@@ -18,18 +18,10 @@ def cars(request):
 
 def detail(request, slug):
     detail_car = Car.objects.filter(slug=slug)
-    return render(request, 'detail.html', {'detail_car': detail_car})
-
-
-def test_drive(request, slug):
-    car = Car.objects.filter(slug=slug)
-    form = ApplicationForm(request.POST or None)
+    form = TestDriveForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         form.save()
-        form = ApplicationForm()
-    return render(request, 'test_drive.html', {'cars': cars,'form':form})
-
-
-
+        form = TestDriveForm()
+    return render(request, 'detail.html', {'detail_car': detail_car, 'form': form})
 
 

@@ -1,34 +1,74 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for i in detail_car %}
-        <div class="columns box is-fullwidth a1">
-            <div class="column is-half">
-                <img src="{{ i.image1.url }}" alt="" style="">
-                <a class="button is-success " href="{% url 'cars:test_drive' i.slug %}">Test drive</a>
-                <a class="button is-success">Test drive</a>
-            </div>
-            <div class="column is-half">
-                <div class="title">{{ i.name }}</div>
-                <div class="subtitle has-text-grey-dark ">
-                    Цена:-------------------------------------------------------{{ i.price }}$
+    <section class="section">
+        {% for i in detail_car %}
+            <div class="columns box is-fullwidth a1">
+                <div class="column is-half">
+                    <img src="{{ i.image1.url }}" alt="" style="">
+
                 </div>
-                <div class="subtitle">
-                    Категория:-------------------------------------------------------{{ i.category }}</div>
-                <div class="subtitle">
-                    Марка:----------------------------------------------------------{{ i.brand }}</div>
-                <div class="subtitle ">Дата производства:-----------------------------------------{{ i.date }}</div>
-                <div class="subtitle">
-                    Пробег:-------------------------------------------------------------------{{ i.probeg }}</div>
-                <div class="subtitle">Обьём
-                    двигателя:-------------------------------------------------------{{ i.obyomdvigatela }}</div>
-                <div class="subtitle">
-                    Цвет:---------------------------------------------------------------{{ i.color }}</div>
-                <div class="subtitle">коробка
-                    передач:-------------------------------------------------------{{ i.korobka }}</div>
-                <div class="subtitle">
-                    привод:-----------------------------------------------------------------{{ i.privod }}</div>
+                <div class="column is-half">
+                    <div class="columns">
+                        <div class="column is-4">
+                        <h1 class="title ">Цена:</h1>
+                        <h1 class="title">Категория:</h1>
+                        <h1 class="title">Марка:</h1>
+                        <h1 class="title">Пробег:</h1>
+                        <h1 class="title">Цвет:</h1>
+                        <h1 class="title">передач:</h1>
+                        <h1 class="title">привод:</h1>
+                        </div>
+                        <div class="column is-2">
+                            <hr>
+                        </div>
+                        <div class="column is-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    <section class="section">
+        {#    <form method="post">#}
+        {#    {% csrf_token %}#}
+        {#        {% for forms in form  %}#}
+        {#            {{ forms }}#}
+        {#        {% endfor %}#}
+        {#    <button type="submit">Отправить заявку на тест драйв</button>#}
+        {#    </form>#}
+        <h1 class="title is-size-2 has-text-centered">Запись на тест драйв</h1>
+        <hr class="has-background-grey-lighter">
+        <div class="columns is-centered" style="margin-top: 4%">
+            <div class="column is-4">
+                <div class="box has-background-info-light" style="opacity: 1">
+                    <form class="form has-text-centered" method="post">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label class="label">Ф.И.О</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Мавлянова Сафия Нусратовна">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">введите номер телефона</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="+998907159923">
+                            </div>
+                        </div>
+                        <label class="label">введите дату</label>
+                        <div class="control">
+                            <input class="input" type="date">
+                        </div>
+                        <br>
+                        <button type="submit" class="button is-success is-fullwidth is-rounded">
+                            Отправить
+                        </button>
+                    </form>
+
+                </div>
             </div>
         </div>
-    {% endfor %}
+    </section>
 {% endblock %}

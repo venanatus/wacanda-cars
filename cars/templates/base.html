@@ -19,7 +19,7 @@
     <div class="hero-head">
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
+                <a class="navbar-item" href="{% url 'cars:home' %}">
                     <img src="{% static 'images/wakanda.jpg' %}" width="30px" height="50px">
                 </a>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -47,6 +47,9 @@
                             </a>
                             <a class="navbar-item">
                                 Contact
+                            </a>
+                            <a href="tel:+998934574920" class="navbar-item">
+                                Call
                             </a>
 
                         </div>
@@ -99,9 +102,10 @@
                     <p class="bd-notification title     ">Wakanda cars</p>
                     <div class="columns is-mobile">
                         <div class="column">
-                            <p class="bd-notification is-info">Здесь можно обрести автомобиль своей мечты. Посещайте
+                            <p class="bd-notification is-info">Добро пожаловать в наш автосалон, где мечты о великолепном автомобиле становятся реальностью! Мы предлагаем широкий выбор новых и подержанных автомобилей, чтобы удовлетворить даже самые изысканные вкусы.Здесь можно обрести автомобиль своей мечты. Посещайте
                                 сайт и
                                 записывайтесь на тест драйв.</p>
+
                         </div>
                     </div>
                 </div>

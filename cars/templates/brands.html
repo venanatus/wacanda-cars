@@ -2,12 +2,16 @@
     <div class="columns">
         {% for brand in brands %}
             <div class="column">
+             <a href="{% url 'cars:home' %}?brand={{ brand.pk }}"  style="margin-left: 50px" class=" ml-6">
                 <div class="box has-text-centered">
-                    <img src="{{ brand.img.url }}" alt="" width="300" height="400" >
-                <a href="{% url 'cars:home' %}?brand={{ brand.pk }}"  style="margin-left: 50px" class="navbar-item ml-6">
+
+                    <img src="{{ brand.img.url }}" alt=""  >
+
+
                     {{ brand }}
-                </a>
+
                 </div>
+                  </a>
             </div>
 
 
