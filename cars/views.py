@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Car, Slide
+from .models import Car, Slide, TestDrive
 from django.db.models import Q
 from .forms import TestDriveForm
 
@@ -17,11 +17,11 @@ def cars(request):
 
 
 def detail(request, slug):
-    detail_car = Car.objects.filter(slug=slug)
+    car = Car.objects.get(slug=slug)
     form = TestDriveForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
-        form.save()
+        instance = form.save(commit=False)
+        instance.car = car
+        instance.save()
         form = TestDriveForm()
-    return render(request, 'detail.html', {'detail_car': detail_car, 'form': form})
-
-
+    return render(request, 'detail.html', {'car': car, 'form': form})

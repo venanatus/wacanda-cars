@@ -2,22 +2,22 @@ from django.db import models
 from django.template.defaultfilters import first
 
 RATE_CHOICES = [
-    (1, 'красный'),
-    (2, 'зеленый'),
-    (3, 'синий'),
-    (4, 'белый'),
-    (5, 'черный'),
-    (6, 'серая'),
+    ('красный', 'красный'),
+    ('зеленый', 'зеленый'),
+    ('синий', 'синий'),
+    ('белый', 'белый'),
+    ('черный', 'черный'),
+    ('серая', 'серая'),
 ]
 korobka = [
-    (1, '1 - Автоматическая'),
-    (2, '2 - Механическая')
+    ('Автоматическая', '1 - Автоматическая'),
+    ('Механическая', '2 - Механическая')
 ]
 
 privod = [
-    (1, '1 - Передний'),
-    (2, '2 - задний'),
-    (3, '3 - полный')
+    ('Передняя', '1 - Передний'),
+    ('Задняя', '2 - задний'),
+    ('Полная', '3 - полный')
 ]
 
 
@@ -68,7 +68,7 @@ class TestDrive(models.Model):
     last_name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     date = models.DateTimeField(auto_now=True)
-    car = models.ForeignKey(Car, null=True, blank=True, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.first_name
