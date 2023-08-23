@@ -3,8 +3,9 @@
 {% block content %}
     <section class="section">
 
-            <div class="columns box is-fullwidth a1">
-                <div class="columns box is-fullwidth a1" style="border-radius: 20px">
+            <div class="box">
+                <div class="columns  is-fullwidth a1">
+                <div class="columns  is-fullwidth a1" style="border-radius: 20px">
     <div class="column is-half">
         <br>
         <img src="{{ car.image1.url }}" alt="" style="border-radius: 20px">
@@ -49,8 +50,15 @@
             </h2>
         </h2>
     </div>
+
 </div>
+
             </div>
+                 <h1 class="title has-text-centered" style="margin-bottom: 25px">
+            _______________________________________________________________________________________________</h1>
+                <h1 class="subtitle mt-6">{{ car.description }}</h1>
+            </div>
+
 
     </section>
    {% if user.is_authenticated %}
