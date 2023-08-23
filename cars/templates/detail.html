@@ -53,7 +53,8 @@
             </div>
 
     </section>
-    <section class="section">
+   {% if user.is_authenticated %}
+        <section class="section">
         {#    <form method="post">#}
         {#    {% csrf_token %}#}
 
@@ -96,4 +97,5 @@
             </div>
         </div>
     </section>
+   {% endif %}
 {% endblock %}

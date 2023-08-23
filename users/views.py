@@ -25,22 +25,3 @@ def sign_out(request):
     return redirect('users:sign_in')
 
 
-def edit_profile(request):
-    form = EditProfileForm(request.POST, instance=request.user)
-
-    if form.is_valid() and request.method == 'POST':
-        form.save()
-        return redirect('cars:home')
-    form = EditProfileForm(instance=request.user)
-    return render(request, 'edit_profile.html', {'form': form})
-
-
-def reset_password(request):
-    form = ResetPasswordForm(request.user, request.POST)
-
-    if form.is_valid() and request.method == 'POST':
-        user = form.save()
-        update_session_auth_hash(request, user)
-        return redirect('users:sign_in')
-    form = ResetPasswordForm(request.user)
-    return render(request, 'reset_password.html', {'form': form})

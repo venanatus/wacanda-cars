@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load brand %}
+{% load category %}
 
 
 
@@ -17,6 +18,7 @@
 {% endblock %}
 {% block content %}
     {% brands %}
+    {% categories %}
     <section class="section">
         <h1 class="title has-text-centered mt-6">Специальные предложения именно для ВАС!</h1>
         <h1 class="title has-text-centered" style="margin-bottom: 25px">

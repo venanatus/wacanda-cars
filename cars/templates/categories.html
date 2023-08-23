@@ -1,0 +1,20 @@
+<section class="section">
+    <div class="columns">
+        {% for brand in brands %}
+            <div class="column">
+                <a href="{% url 'cars:home' %}?category={{ category.pk }}" style="margin-left: 50px" class=" ml-6">
+                    <div class="box has-text-centered">
+
+                        <img src="{{ brand.img.url }}" alt="">
+
+
+                        {{ brand }}
+
+                    </div>
+                </a>
+            </div>
+
+
+        {% endfor %}
+    </div>
+</section>

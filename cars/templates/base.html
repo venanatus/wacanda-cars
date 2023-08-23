@@ -32,31 +32,39 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="button is-success mt-3 is-rounded" href="{% url 'cars:home' %}">
-                        Home
+                        Главная
                     </a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link button is-success is-inverted mt-2 is-rounded is-active">
-                            More
+                            Больше
                         </a>
                         <div class="navbar-dropdown ">
                             <a class="navbar-item">
-                                About
+                                О компании
                             </a>
                             <a class="navbar-item">
-                                Test drive
+                                Мои записи на тест драйв
                             </a>
                             <a class="navbar-item">
-                                Contact
+                                Контакты
                             </a>
                             <a href="tel:+998934574920" class="navbar-item">
-                                Call
+                                Позвонить
                             </a>
 
                         </div>
+                        {% if user.is_authenticated %}
+                        <div class="navbar-item">
+                            <button class="button is-warning" aria-haspopup="true"
+                                    aria-controls="dropdown-menu">
+                                Welcome: <span class="has-text-weight-bold mx-2">{{ user }}</span>
+                            </button>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 <form method="get">
-                    <div class="field has-addons mt-4 mr-2">
+                    <div class="field has-addons mt-2 mr-2">
                         <div class="control">
                             <input class="input button is-rounded" type="search" placeholder="Поиск машин"
                                    name="search">
@@ -68,123 +76,136 @@
                         </div>
                     </div>
                 </form>
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a href="{% url 'users:sign_up' %}" class="button is-success mt-2 is-rounded">
-                                Sign up
-                            </a>
-                            <a href="{% url 'users:sign_in' %}" class="button is-success mt-2 is-rounded">
-                                Log in
-                            </a>
+                {% if user.is_authenticated %}
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+
+                                <a href="{% url 'users:sign_out' %}" class="button is-warning">
+                                    Выйти из аккаунта
+                                </a>
+
                         </div>
                     </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="hero-body">
-        {% block brands %}
-        {% endblock %}
-        {% block slider %}
-
-        {% endblock %}
-
-        {% block content %}
-
-        {% endblock %}
-
-    </div>
-    <div class="hero-foot ">
-{#        <footer class="footer has-background-success">#}
-{#            <div class="columns">#}
-{#                <div class="column">#}
-{#                    <p class="bd-notification title     ">Wakanda cars</p>#}
-{#                    <div class="columns is-mobile">#}
-{#                        <div class="column">#}
-{#                            <p class="bd-notification is-info">Добро пожаловать в наш автосалон, где мечты о великолепном автомобиле становятся реальностью! Мы предлагаем широкий выбор новых и подержанных автомобилей, чтобы удовлетворить даже самые изысканные вкусы.Здесь можно обрести автомобиль своей мечты. Посещайте#}
-{#                                сайт и#}
-{#                                записывайтесь на тест драйв.</p>#}
-{##}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="column">#}
-{#                    <h1 class="bd-notification subtitle">Mы в соц.сетях:</h1>#}
-{#                    <div class="columns is-mobile">#}
-{#                        <div class="column is-half">#}
-{#                            <p class="bd-notification">You Tube#}
-{#                                <br>#}
-{#                                Instagram#}
-{#                                <br>#}
-{#                                Telegram#}
-{#                                <br>#}
-{#                                Tik Tok#}
-{#                            </p>#}
-{#                        </div>#}
-{#                        <div class="column">#}
-{#                            <h1 class="bd-notification subtitle">Контакты:</h1>#}
-{#                            <div class="columns is-mobile">#}
-{#                                <div class="column is-half">#}
-{#                                    <p class="bd-notification">#}
-{#                                        <br>#}
-{#                                        +998 (88) 488-09-30#}
-{#                                    </p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#        </footer>#}
-        <footer class="footer has-background-success">
-            <div class="columns">
-                <div class="column">
-                    <p class="bd-notification title     ">Wakanda cars</p>
-                    <div class="columns is-6">
-                        <div class="column">
-                            <p class="bd-notification is-info">Здесь можно обрести автомобиль своей мечты. Посещайте
-                                сайт и
-                                записывайтесь на тест драйв.
-                            </p>
-                            <p> Ваше удовлетворение - наш главный приоритет. Мы стремимся сделать ваше посещение нашего
-                                автосалона незабываемым и приятным. Приходите к нам и откройте для себя мир роскоши и
-                                комфорта на колесах!</p>
+                    </div>
+                {% else %}
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a href="{% url 'users:sign_up' %}" class="button is-success mt-2 is-rounded">
+                                    Регистрация
+                                </a>
+                                <a href="{% url 'users:sign_in' %}" class="button is-success mt-2 is-rounded">
+                                    Вход
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    </div>
+                {% endif %}
+    </nav>
+</div>
+<div class="hero-body">
+    {% block brands %}
+    {% endblock %}
+    {% block slider %}
 
-                <div class="column is-3">
-                    <h1 class="subtitle">Mы в соц.сетях:</h1>
-                    <div class="column is-3">
-                        <p class="">You Tube
-                            <br>
-                            Instagram
-                            <br>
-                            Telegram
-                            <br>
-                            Tik Tok
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+<div class="hero-foot ">
+    {#        <footer class="footer has-background-success">#}
+    {#            <div class="columns">#}
+    {#                <div class="column">#}
+    {#                    <p class="bd-notification title     ">Wakanda cars</p>#}
+    {#                    <div class="columns is-mobile">#}
+    {#                        <div class="column">#}
+    {#                            <p class="bd-notification is-info">Добро пожаловать в наш автосалон, где мечты о великолепном автомобиле становятся реальностью! Мы предлагаем широкий выбор новых и подержанных автомобилей, чтобы удовлетворить даже самые изысканные вкусы.Здесь можно обрести автомобиль своей мечты. Посещайте#}
+    {#                                сайт и#}
+    {#                                записывайтесь на тест драйв.</p>#}
+    {##}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="column">#}
+    {#                    <h1 class="bd-notification subtitle">Mы в соц.сетях:</h1>#}
+    {#                    <div class="columns is-mobile">#}
+    {#                        <div class="column is-half">#}
+    {#                            <p class="bd-notification">You Tube#}
+    {#                                <br>#}
+    {#                                Instagram#}
+    {#                                <br>#}
+    {#                                Telegram#}
+    {#                                <br>#}
+    {#                                Tik Tok#}
+    {#                            </p>#}
+    {#                        </div>#}
+    {#                        <div class="column">#}
+    {#                            <h1 class="bd-notification subtitle">Контакты:</h1>#}
+    {#                            <div class="columns is-mobile">#}
+    {#                                <div class="column is-half">#}
+    {#                                    <p class="bd-notification">#}
+    {#                                        <br>#}
+    {#                                        +998 (88) 488-09-30#}
+    {#                                    </p>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#        </footer>#}
+    <footer class="footer has-background-success">
+        <div class="columns">
+            <div class="column">
+                <p class="bd-notification title     ">Wakanda cars</p>
+                <div class="columns is-6">
+                    <div class="column">
+                        <p class="bd-notification is-info">Здесь можно обрести автомобиль своей мечты. Посещайте
+                            сайт и
+                            записывайтесь на тест драйв.
                         </p>
+                        <p> Ваше удовлетворение - наш главный приоритет. Мы стремимся сделать ваше посещение нашего
+                            автосалона незабываемым и приятным. Приходите к нам и откройте для себя мир роскоши и
+                            комфорта на колесах!</p>
                     </div>
                 </div>
-                <div class="column is-2">
-                    <h1 class=" subtitle">Компания</h1>
-                    О нас
-                    <br>
-                    Реквизиты
-                    <br>
-                    Пресс центр
-                    <br>
-                </div>
+            </div>
+
+            <div class="column is-3">
+                <h1 class="subtitle">Mы в соц.сетях:</h1>
                 <div class="column is-3">
-                    <h1 class=" subtitle">Контакты:</h1>
-                    +998 (88) 488-09-30
-                    <br>
-                    +998 (90) 715-99-23
+                    <p class="">You Tube
+                        <br>
+                        Instagram
+                        <br>
+                        Telegram
+                        <br>
+                        Tik Tok
+                    </p>
                 </div>
             </div>
-                <h1 class="has-text-centered">2023 © Wakanda cars - интернет-салон машин</h1>
-     </div>
-    </footer>
-    </div>
+            <div class="column is-2">
+                <h1 class=" subtitle">Компания</h1>
+                О нас
+                <br>
+                Реквизиты
+                <br>
+                Пресс центр
+                <br>
+            </div>
+            <div class="column is-3">
+                <h1 class=" subtitle">Контакты:</h1>
+                +998 (88) 488-09-30
+                <br>
+                +998 (90) 715-99-23
+            </div>
+        </div>
+        <h1 class="has-text-centered">2023 © Wakanda cars - интернет-салон машин</h1>
+</div>
+</footer>
+</div>
 
 </div>
 
