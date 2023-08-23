@@ -2,22 +2,22 @@ from django.db import models
 from django.template.defaultfilters import first
 
 RATE_CHOICES = [
-    ('красный', 'красный'),
-    ('зеленый', 'зеленый'),
-    ('синий', 'синий'),
-    ('белый', 'белый'),
-    ('черный', 'черный'),
-    ('серая', 'серая'),
+    ('1', 'красный'),
+    ('2', 'зеленый'),
+    ('3', 'синий'),
+    ('4', 'белый'),
+    ('5', 'черный'),
+    ('6', 'серая'),
 ]
 korobka = [
-    ('Автоматическая', '1 - Автоматическая'),
-    ('Механическая', '2 - Механическая')
+    ('Автоматическая', 'Автоматическая'),
+    ('Механическая', 'Механическая')
 ]
 
 privod = [
-    ('Передняя', '1 - Передний'),
-    ('Задняя', '2 - задний'),
-    ('Полная', '3 - полный')
+    ('Передняя', 'Передний'),
+    ('Задняя', 'задний'),
+    ('Полная', 'полный')
 ]
 
 
@@ -32,9 +32,9 @@ class Car(models.Model):
     brand = models.ForeignKey('cars.Brand', on_delete=models.CASCADE)
     probeg = models.IntegerField('пробег')
     obyomdvigatela = models.IntegerField('обьем двигателя')
-    color = models.PositiveSmallIntegerField('цвет', choices=RATE_CHOICES, null=True, )
-    korobka = models.PositiveSmallIntegerField('коробка передач', choices=korobka, null=True)
-    privod = models.PositiveSmallIntegerField('привод', choices=privod, null=True)
+    color = models.CharField(max_length=255, choices=RATE_CHOICES, null=True, )
+    korobka = models.CharField(max_length=255, choices=korobka, null=True)
+    privod = models.CharField(max_length=255, choices=privod, null=True)
     category = models.ForeignKey('cars.Category', on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, null=True)
 
@@ -68,7 +68,7 @@ class TestDrive(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField()
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
 
     def __str__(self):

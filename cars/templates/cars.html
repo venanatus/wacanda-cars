@@ -44,12 +44,34 @@
                             </div>
                             <div class="column is-4">{{ cars.price }}$</div>
                         </div>
+                        <div class="columns is-vcentered">
+                            <div class="column is-4">Категория</div>
+                            <div class="column">
+                                <hr style="background: black
+">
+                            </div>
+                            <div class="column is-4">{{ cars.category }}</div>
+                        </div>
+                        <div class="columns is-vcentered">
+                            <div class="column is-3">Марка</div>
+                            <div class="column">
+                                <hr style="background: black
+">
+                            </div>
+                            <div class="column is-4">{{ cars.brand }}</div>
+                        </div>
+
+                        <div class="columns is-vcentered">
+                            <div class="column is-2">Дата:</div>
+                            <div class="column">
+                                <hr style="background: black
+">
+                            </div>
+                            <div class="column is-4">{{ cars.date }}</div>
+                        </div>
                     </div>
-                        <div class="subtitle">Категория:<span
-                                style="font-size: 18px">------------------------------------</span>{{ cars.category }}</div>
-                    <div class="subtitle"><h1>Марка:<span style="font-size: 18px">--------------------------------------------</span>{{ cars.brand }}
-                    </h1></div>
-                    <div class="subtitle ">Дата производства: {{ cars.date }}</div>
+
+
                 </a>
             {% endfor %}
         </div>

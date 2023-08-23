@@ -7,7 +7,8 @@ class TestDriveForm(forms.ModelForm):
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}),label="Введите фамилию")
     phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}),label="введите номер телефона")
 
+
     class Meta:
         model = TestDrive
-        fields = ['first_name', 'last_name', 'phone']
+        fields = ['first_name', 'last_name', 'phone','date']
 

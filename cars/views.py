@@ -30,5 +30,5 @@ def detail(request, slug):
 
 
 def test_drive(request):
-    test_drive = TestDrive.objects.filter(user=request.user)
+    test_drive = TestDrive.objects.filter(last_name=request.user.last_name)
     return render(request, 'test_drive.html', {'test_drive': test_drive})
