@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import first
+from django.contrib.auth.models import User
 
 RATE_CHOICES = [
     ('1', 'красный'),
@@ -70,6 +71,7 @@ class TestDrive(models.Model):
     phone = models.CharField(max_length=255)
     date = models.DateTimeField()
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
 
     def __str__(self):
         return self.first_name

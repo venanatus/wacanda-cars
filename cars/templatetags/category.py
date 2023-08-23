@@ -6,5 +6,5 @@ register = template.Library()
 
 @register.inclusion_tag('categories.html')
 def categories():
-    brands_list = Category.objects.all()
-    return {'brands': brands_list}
+    category_list = Category.objects.all()
+    return {'category_list': category_list}

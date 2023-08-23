@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Car, Slide, TestDrive
 from django.db.models import Q
 from .forms import TestDriveForm
+from django.contrib.auth.models import User
 
 
 def cars(request):
@@ -24,11 +25,13 @@ def detail(request, slug):
     if request.method == 'POST' and form.is_valid():
         instance = form.save(commit=False)
         instance.car = car
+        instance.user = request.user
         instance.save()
+
         form = TestDriveForm()
     return render(request, 'detail.html', {'car': car, 'form': form})
 
 
 def test_drive(request):
-    test_drive = TestDrive.objects.filter(last_name=request.user.last_name)
+    test_drive = TestDrive.objects.filter(user=request.user)
     return render(request, 'test_drive.html', {'test_drive': test_drive})
