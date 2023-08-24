@@ -27,7 +27,6 @@ def detail(request, slug):
         instance.car = car
         instance.user = request.user
         instance.save()
-
         form = TestDriveForm()
     return render(request, 'detail.html', {'car': car, 'form': form})
 

@@ -3,7 +3,7 @@
         {% for brand in brands %}
             <div class="column">
              <a href="{% url 'cars:home' %}?brand={{ brand.pk }}"  style="margin-left: 50px" class=" ml-6">
-                <div class="box has-text-centered">
+                <div class="box has-text-centered a1">
 
                     <img src="{{ brand.img.url }}" alt=""  >
 
