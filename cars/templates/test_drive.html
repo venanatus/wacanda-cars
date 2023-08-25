@@ -6,7 +6,11 @@
             <h1 class="title is-1 has-text-centered">Список заявок на тест драйв</h1>
             <ul>
                 {% for i in test_drive %}
-                    <li><h1>Машина:{{ i.car }} Время : {{ i.date }}</h1></li>
+                    <li><div class="box">
+                        Машина:<h1 class="subtitle">{{ i.car }}</h1>
+                        Дата:<h1 class="subtitle">{{ i.date }}</h1>
+
+                    </div></li>
                 {% endfor %}
             </ul>
         </div>

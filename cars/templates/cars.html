@@ -116,19 +116,20 @@
                 {##}
                 {##}
                 {#                </a>#}
-                <a class="column  mt-6 b1 is-4 m-4 " style="border-radius: 30px" href="{% url 'cars:detail' cars.slug %}">
-                <div class="card">
+                <a class="column  mt-6  is-4 m-4 " style="border-radius: 30px" href="{% url 'cars:detail' cars.slug %}">
+                <div class="card b1">
                     <img src="{{ cars.image1.url }}" alt="Машина">
                     <div class="card-content">
                         <div class="card-title"> {{ cars.name }}</div>
 
                         <div class="card-details">
-                            <p>Год выпуска: 2023</p>
+                            <p>{{ cars.date }}</p>
                             <p>Пробег: 10,000 км</p>
-                            <p>Тип топлива: Бензин</p>
+                            <p>Категория : {{ cars.category }}</p>
                             <p>Коробка передач: Автомат</p>
+                            <p>Марка:{{ cars.brand }}</p>
                         </div>
-                        <div class="card-price">Цена: $50,000</div>
+                        <div class="card-price">Цена: {{ cars.price }}$</div>
                     </div>
                 </div>
                 </a>
