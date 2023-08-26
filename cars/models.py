@@ -56,6 +56,7 @@ class Brand(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
+    img = models.ImageField(null=True)
 
 
     def __str__(self):

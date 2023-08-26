@@ -5,10 +5,10 @@
                 <a href="{% url 'cars:home' %}?category={{ category.pk }}" style="margin-left: 50px" class=" ml-6">
                     <div class="box has-text-centered a1">
 
-                        <img src="{{ category.img.url }}" alt="">
+                        <img src="{{ category.img.url }}" alt="" width="250px">
 
 
-                        {{ category }}
+{#                        <h1 class="title">{{ category }}</h1>#}
 
                     </div>
                 </a>
