@@ -5,10 +5,16 @@ from .forms import SignUpForm, SignInForm, EditProfileForm, ResetPasswordForm
 
 def sign_up(request):
     form = SignUpForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
+    is_success = False
+    is_not_short = True
+    if len(form.password1) < 5:
+        is_not_short = False
+
+    if request.method == "POST" and form.is_valid() and is_not_short == True:
         form.save()
-        return redirect('users:sign_in')
-    return render(request, 'sign_up.html', {'form': form})
+        is_success = True
+        # return redirect('users:sign_in')
+    return render(request, 'sign_up.html', {'form': form, 'is_success': is_success, 'is_not_short': is_not_short})
 
 
 def sign_in(request):
@@ -23,5 +29,3 @@ def sign_in(request):
 def sign_out(request):
     logout(request)
     return redirect('users:sign_in')
-
-

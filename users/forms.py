@@ -10,7 +10,6 @@ class SignUpForm(BulmaMixin, UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput(), label='Введите пароль')
     password2 = forms.CharField(widget=forms.PasswordInput(), label='Подтвердите пароль')
 
-
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
@@ -19,7 +18,6 @@ class SignUpForm(BulmaMixin, UserCreationForm):
 class SignInForm(BulmaMixin, AuthenticationForm):
     username = forms.CharField(label='Введите имя пользователя')
     password = forms.CharField(widget=forms.PasswordInput(), label='Введите пароль')
-
 
     class Meta:
         model = User
