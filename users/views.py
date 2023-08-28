@@ -6,15 +6,12 @@ from .forms import SignUpForm, SignInForm, EditProfileForm, ResetPasswordForm
 def sign_up(request):
     form = SignUpForm(request.POST or None)
     is_success = False
-    is_not_short = True
-    if len(form.password1) < 5:
-        is_not_short = False
-
-    if request.method == "POST" and form.is_valid() and is_not_short == True:
+    if request.method == "POST" and form.is_valid():
         form.save()
         is_success = True
         # return redirect('users:sign_in')
-    return render(request, 'sign_up.html', {'form': form, 'is_success': is_success, 'is_not_short': is_not_short})
+
+    return render(request, 'sign_up.html', {'form': form, 'is_success': is_success})
 
 
 def sign_in(request):
