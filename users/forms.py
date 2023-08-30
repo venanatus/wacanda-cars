@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .bulma_mixin import BulmaMixin
 
 
-class SignUpForm(BulmaMixin, UserCreationForm):
+class SignUpForm( UserCreationForm,BulmaMixin):
     username = forms.CharField(label='Введите имя пользователя')
     email = forms.EmailField(label='Введите адрес электронной почты')
     password1 = forms.CharField(widget=forms.PasswordInput(), label='Введите пароль')
