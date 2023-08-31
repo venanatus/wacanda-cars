@@ -23,6 +23,7 @@ def sign_up(request):
         if form.is_valid():
             user = form.save()
             print(form.password1)
+            print('signed')
             login(request, user)
 
             return redirect('cars:home')
